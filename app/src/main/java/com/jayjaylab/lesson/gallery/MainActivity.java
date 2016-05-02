@@ -11,7 +11,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static int msn = 1;
+    private static int msn = 2;
 
 
     FragmentManager fragmentManager;
