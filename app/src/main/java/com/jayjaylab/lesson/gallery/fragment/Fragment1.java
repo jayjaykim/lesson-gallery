@@ -1,4 +1,4 @@
-package com.jayjaylab.lesson.gallery;
+package com.jayjaylab.lesson.gallery.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.jayjaylab.lesson.gallery.R;
 
 /**
  * Created by Homin on 2016-04-07.

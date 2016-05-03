@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.FutureTarget;
+import com.jayjaylab.lesson.gallery.fragment.Fragment2;
 
 import java.io.File;
 import java.util.concurrent.ExecutionException;
@@ -31,7 +32,8 @@ public class AsyncTask extends android.os.AsyncTask<File[], Void, File> {
 
         File[] url = params[0];
 
-        FutureTarget<File> future = Glide.with(Fragment2.mContext)
+
+        FutureTarget<File> future = Glide.with(context)
                 .load(url)
                 .downloadOnly(400, 400);
         try {

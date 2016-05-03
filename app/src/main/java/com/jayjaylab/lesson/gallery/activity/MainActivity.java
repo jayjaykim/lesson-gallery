@@ -1,4 +1,4 @@
-package com.jayjaylab.lesson.gallery;
+package com.jayjaylab.lesson.gallery.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -8,10 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import com.jayjaylab.lesson.gallery.R;
+import com.jayjaylab.lesson.gallery.fragment.Fragment1;
+import com.jayjaylab.lesson.gallery.fragment.Fragment2;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static int msn = 2;
+    private static int msn = 1;
 
 
     FragmentManager fragmentManager;
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         fragmentManager = getFragmentManager();
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 }else if(msn == 2){
                     fragmentManager = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.main_layout, fragment_first);
+                    fragmentTransaction.add(R.id.main_layout, fragment_first);
                     fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
 

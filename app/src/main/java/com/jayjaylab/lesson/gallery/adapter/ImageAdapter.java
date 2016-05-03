@@ -1,4 +1,4 @@
-package com.jayjaylab.lesson.gallery;
+package com.jayjaylab.lesson.gallery.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.jayjaylab.lesson.gallery.R;
 
 import java.io.File;
 
@@ -36,6 +37,9 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
                 .load(imageFile)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.getImageView());
+
+        holder.imageView.getContext();
+        holder.getImageView().getContext();
     }
 
     @Override
@@ -44,7 +48,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imageView;
+        public ImageView imageView;
 
         public ViewHolder(View view) {
             super(view);

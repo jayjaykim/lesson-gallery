@@ -1,4 +1,4 @@
-package com.jayjaylab.lesson.gallery;
+package com.jayjaylab.lesson.gallery.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.jayjaylab.lesson.gallery.MyData;
+import com.jayjaylab.lesson.gallery.R;
 
 import java.util.ArrayList;
 
@@ -59,15 +61,5 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             mImageView = (ImageView) view.findViewById(R.id.image);
             mTextView = (TextView) view.findViewById(R.id.textview);
         }
-    }
-}
-
-class MyData {
-    public String text;
-    public int img;
-
-    public MyData(String text, int img) {
-        this.text = text;
-        this.img = img;
     }
 }
