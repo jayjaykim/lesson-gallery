@@ -3,6 +3,9 @@ a simple gallery
 
 # todos
 
+### 참고 사이트
+* <https://guides.codepath.com/android>
+
 ### Activity, Fragment 제대로 구현
 * naming 및 패키지 구성
 * Layout 구현은 [http://android-developers.blogspot.kr/2015/05/android-design-support-library
@@ -16,11 +19,6 @@ a simple gallery
 * <http://www.grokkingandroid.com/android-tutorial-content-provider-basics/>
 * <http://developer.android.com/guide/topics/providers/content-providers.html>
 * <http://developer.android.com/reference/android/provider/package-summary.html>
-
-### UI
-* LinearLayout, GridLayout 둘다 적용
-* 먼저 LinearLayoutManager한 다음에 GridLayoutManager 적용
-* Click 처리
 
 ### 퍼미션 추가하기
 * <http://developer.android.com/guide/topics/security/permissions.html>
