@@ -11,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jayjaylab.lesson.gallery.*;
 import com.jayjaylab.lesson.gallery.adapter.ImageAdapter;
 import com.jayjaylab.lesson.gallery.adapter.MyAdapter;
@@ -31,7 +33,7 @@ public class Fragment2 extends Fragment {
     private RecyclerView.Adapter adapterMenu, adapterGallery;
     private ArrayList<MyData> myDataset;
     private File mGalleryFolder;
-    private String GALLERY_LOCATION = "Camera";
+    private String GALLERY_LOCATION = ".thumbnails";
 
 
     @Nullable
@@ -67,9 +69,6 @@ public class Fragment2 extends Fragment {
         mContext = getActivity();
 
         imageFiles = mGalleryFolder.listFiles();
-
-//        AsyncTask AT = new AsyncTask(getActivity());
-//        AT.execute(imageFiles);
 
         recyclerViewMenu.setHasFixedSize(true);
         recyclerViewGallery.setHasFixedSize(true);

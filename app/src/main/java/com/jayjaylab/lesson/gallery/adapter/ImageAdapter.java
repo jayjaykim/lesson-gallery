@@ -42,13 +42,13 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         File imageFile = imagesFile[position];
-        Log.d(TAG, "position : " + position +", imageFile: " + imageFile);
+        Log.d(TAG, "onBindViewHolder() : position : " +
+                position +", imageFile: " + imageFile);
 
         if(imageFile != null) {
             Glide.with(fragment)
                     .load(imageFile)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                    .thumbnail(0.1f)
                     .listener(requestListener)
                     .crossFade()
                     .into(holder.imageView);
@@ -86,7 +86,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         public boolean onResourceReady(GlideDrawable glideDrawable, File file,
                                        Target<GlideDrawable> target, boolean isFromMemoryCache,
                                        boolean isFirstResource) {
-            Log.d(TAG, "file : " + file.getAbsolutePath() +
+            Log.d(TAG, "onResourceReady() : file : " + file.getAbsolutePath() +
                     ", target : " + target +
                     ", isFromMemoryCache : " + isFromMemoryCache +
                     ", isFirstResource : " + isFirstResource);

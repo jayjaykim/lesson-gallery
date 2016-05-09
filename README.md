@@ -13,7 +13,7 @@ a simple gallery
 * Fragment backstack 처리하여 Fragment 간 이동 자연스럽게 처리 [http://developer.android.com/training/implementing-navigation/temporal.html](http://developer.android.com/training/implementing-navigation/temporal.html)
 
 ### RecyclerView
-* Lazy-loading 구현
+* Early-loading 구현
 
 ### MediaStore(멀티미디어를 위한 Android 표준 ContentProvider) 활용한 Gallery 구현
 * <http://www.grokkingandroid.com/android-tutorial-content-provider-basics/>
