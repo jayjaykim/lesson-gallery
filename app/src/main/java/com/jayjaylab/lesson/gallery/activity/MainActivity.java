@@ -1,10 +1,11 @@
 package com.jayjaylab.lesson.gallery.activity;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +14,7 @@ import com.jayjaylab.lesson.gallery.fragment.Fragment1;
 import com.jayjaylab.lesson.gallery.fragment.Fragment2;
 
 public class MainActivity extends AppCompatActivity {
-
+    final String TAG = MainActivity.class.getSimpleName();
     private static int msn = 1;
 
 
@@ -26,10 +27,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d(TAG, "externalCacheDir : " + getExternalCacheDir()
+                + ", internalCacheDir : " + getCacheDir());
 
 
-
-        fragmentManager = getFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         fragment_first = new Fragment1();
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(msn == 1){
-                    fragmentManager = getFragmentManager();
+                    fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.main_layout, fragment_second);
                     fragmentTransaction.addToBackStack(null);
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                     msn++;
 
                 }else if(msn == 2){
-                    fragmentManager = getFragmentManager();
+                    fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.add(R.id.main_layout, fragment_first);
                     fragmentTransaction.addToBackStack(null);

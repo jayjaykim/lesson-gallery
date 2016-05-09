@@ -1,10 +1,10 @@
 package com.jayjaylab.lesson.gallery.fragment;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,11 +26,9 @@ public class Fragment2 extends Fragment {
     static File[] imageFiles;
     static Context mContext;
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView mRecyclerView1;
-    private RecyclerView.Adapter mAdapter, mAdapter1;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private RecyclerView.LayoutManager mLayoutManager1;
+    private RecyclerView recyclerViewMenu;
+    private RecyclerView recyclerViewGallery;
+    private RecyclerView.Adapter adapterMenu, adapterGallery;
     private ArrayList<MyData> myDataset;
     private File mGalleryFolder;
     private String GALLERY_LOCATION = "Camera";
@@ -43,8 +41,8 @@ public class Fragment2 extends Fragment {
         createImageGallery();
 
         View rootView = inflater.inflate(R.layout.manage_layout, container, false);
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.my_recycler_view1);
-        mRecyclerView1 = (RecyclerView) rootView.findViewById(R.id.image_layout);
+        recyclerViewMenu = (RecyclerView) rootView.findViewById(R.id.my_recycler_view1);
+        recyclerViewGallery = (RecyclerView) rootView.findViewById(R.id.image_layout);
 
         return rootView;
 
@@ -73,20 +71,21 @@ public class Fragment2 extends Fragment {
 //        AsyncTask AT = new AsyncTask(getActivity());
 //        AT.execute(imageFiles);
 
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView1.setHasFixedSize(true);
+        recyclerViewMenu.setHasFixedSize(true);
+        recyclerViewGallery.setHasFixedSize(true);
 
-        mLayoutManager = new LinearLayoutManager(getActivity());
-        mLayoutManager1 = new GridLayoutManager(getActivity(), 4);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
 
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView1.setLayoutManager(mLayoutManager1);
+        recyclerViewMenu.setLayoutManager(linearLayoutManager);
+        recyclerViewGallery.setLayoutManager(gridLayoutManager);
+        recyclerViewGallery.setItemViewCacheSize(30);
 
-        mAdapter = new MyAdapter(myDataset);
-        mAdapter1 = new ImageAdapter(imageFiles);
+        adapterMenu = new MyAdapter(myDataset);
+        adapterGallery = new ImageAdapter(this, imageFiles);
 
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView1.setAdapter(mAdapter1);
+        recyclerViewMenu.setAdapter(adapterMenu);
+        recyclerViewGallery.setAdapter(adapterGallery);
 
 
 

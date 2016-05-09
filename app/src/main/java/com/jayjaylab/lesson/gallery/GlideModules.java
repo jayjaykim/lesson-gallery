@@ -6,6 +6,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.load.engine.bitmap_recycle.LruBitmapPool;
 import com.bumptech.glide.load.engine.cache.ExternalCacheDiskCacheFactory;
+import com.bumptech.glide.load.engine.cache.InternalCacheDiskCacheFactory;
 import com.bumptech.glide.load.engine.cache.LruResourceCache;
 import com.bumptech.glide.load.engine.cache.MemorySizeCalculator;
 import com.bumptech.glide.module.GlideModule;
@@ -28,7 +29,7 @@ public class GlideModules implements GlideModule {
         int customBitmapPoolSize = (int) (2.0 * defaultBitmapPoolSize);
 
         builder.setMemoryCache( new LruResourceCache( customMemoryCacheSize ));
-        builder.setDiskCache(new ExternalCacheDiskCacheFactory(context, "", DISK_CACHE_SIZE));
+        builder.setDiskCache(new ExternalCacheDiskCacheFactory(context, DISK_CACHE_SIZE));
         builder.setBitmapPool( new LruBitmapPool( customBitmapPoolSize ));
 
     }
