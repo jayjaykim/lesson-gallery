@@ -35,7 +35,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         File imageFile = imagesFile[position];
         Glide.with(holder.getImageView().getContext())
                 .load(imageFile)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.getImageView());
 
         holder.imageView.getContext();
