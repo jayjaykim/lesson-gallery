@@ -86,10 +86,6 @@ public class Fragment2 extends Fragment {
 
         recyclerViewMenu.setAdapter(adapterMenu);
         recyclerViewGallery.setAdapter(adapterGallery);
-
-
-
-
     }
 
 //폴더생성
@@ -100,6 +96,4 @@ public class Fragment2 extends Fragment {
             mGalleryFolder.mkdirs();
         }
     }
-
-
 }

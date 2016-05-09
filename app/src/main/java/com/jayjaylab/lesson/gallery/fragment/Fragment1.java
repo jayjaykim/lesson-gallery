@@ -32,12 +32,7 @@ public class Fragment1 extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
         Glide.with(this).load(R.drawable.icon_music).into(ImageView);
-
-
-
     }
 
 }

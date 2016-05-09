@@ -50,6 +50,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
 //                    .thumbnail(0.1f)
                     .listener(requestListener)
+                    .crossFade()
                     .into(holder.imageView);
         }
     }
