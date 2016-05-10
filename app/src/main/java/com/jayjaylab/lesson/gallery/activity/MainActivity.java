@@ -78,9 +78,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
-
-
-        Cursor = getApplicationContext().getContentResolver().query();
     }
 
 
