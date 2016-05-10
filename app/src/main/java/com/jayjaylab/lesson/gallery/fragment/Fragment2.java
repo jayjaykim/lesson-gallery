@@ -1,13 +1,17 @@
 package com.jayjaylab.lesson.gallery.fragment;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +29,7 @@ import java.util.ArrayList;
  */
 public class Fragment2 extends Fragment {
 
-    static File[] imageFiles;
+    static Uri[] imageFiles;
     static Context mContext;
 
     private RecyclerView recyclerViewMenu;
@@ -47,8 +51,6 @@ public class Fragment2 extends Fragment {
         recyclerViewGallery = (RecyclerView) rootView.findViewById(R.id.image_layout);
 
         return rootView;
-
-
     }
 
     @Override
@@ -68,7 +70,8 @@ public class Fragment2 extends Fragment {
 
         mContext = getActivity();
 
-        imageFiles = mGalleryFolder.listFiles();
+//        imageFiles = mGalleryFolder.listFiles();
+        imageFiles = getThumbnails();
 
         recyclerViewMenu.setHasFixedSize(true);
         recyclerViewGallery.setHasFixedSize(true);
@@ -85,6 +88,35 @@ public class Fragment2 extends Fragment {
 
         recyclerViewMenu.setAdapter(adapterMenu);
         recyclerViewGallery.setAdapter(adapterGallery);
+
+
+    }
+
+    // TODO: 2016. 5. 10. 비동기록 동작해야 함 
+    Uri[] getThumbnails() {
+        String[] projection = { MediaStore.Images.Thumbnails._ID,
+                MediaStore.Images.Thumbnails.IMAGE_ID};
+        Cursor cur = getActivity().getContentResolver().query(
+                MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI,
+                projection,
+                null, null, null);
+        if (cur.getCount() == 0) {
+            return null;
+        }
+        cur.moveToFirst();
+
+        Uri[] urls = new Uri[cur.getCount()];
+        int id;
+        int count = 0;
+        while(cur.moveToNext()) {
+            id = cur.getInt(0);
+            Uri uri = Uri.parse(
+                    MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI + "/" + id);
+            urls[count++] = uri;
+        }
+        cur.close();
+
+        return urls;
     }
 
 //폴더생성

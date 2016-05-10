@@ -1,6 +1,7 @@
 package com.jayjaylab.lesson.gallery.adapter;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -25,9 +26,9 @@ import java.lang.ref.WeakReference;
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {
     final String TAG = ImageAdapter.class.getSimpleName();
     Fragment fragment;
-    private File[] imagesFile;
+    private Uri[] imagesFile;
 
-    public ImageAdapter(Fragment fragment, File[] folderFile) {
+    public ImageAdapter(Fragment fragment, Uri[] folderFile) {
         this.fragment = fragment;
         imagesFile = folderFile;
     }
@@ -41,7 +42,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        File imageFile = imagesFile[position];
+        Uri imageFile = imagesFile[position];
         Log.d(TAG, "onBindViewHolder() : position : " +
                 position +", imageFile: " + imageFile);
 
@@ -70,9 +71,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         }
     }
 
-    RequestListener<File, GlideDrawable> requestListener = new RequestListener<File, GlideDrawable>() {
+    RequestListener<Uri, GlideDrawable> requestListener =
+            new RequestListener<Uri, GlideDrawable>() {
         @Override
-        public boolean onException(Exception e, File file, Target<GlideDrawable> target,
+        public boolean onException(Exception e, Uri file, Target<GlideDrawable> target,
                                    boolean isFirstResource) {
             Log.d(TAG, ", file : " + file +
                     ", target : " + target + ", isFirstResource : " + isFirstResource);
@@ -83,10 +85,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         }
 
         @Override
-        public boolean onResourceReady(GlideDrawable glideDrawable, File file,
+        public boolean onResourceReady(GlideDrawable glideDrawable, Uri file,
                                        Target<GlideDrawable> target, boolean isFromMemoryCache,
                                        boolean isFirstResource) {
-            Log.d(TAG, "onResourceReady() : file : " + file.getAbsolutePath() +
+            Log.d(TAG, "onResourceReady() : file : " + file +
                     ", target : " + target +
                     ", isFromMemoryCache : " + isFromMemoryCache +
                     ", isFirstResource : " + isFirstResource);
